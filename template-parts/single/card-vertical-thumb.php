@@ -1,5 +1,22 @@
 <?php
-global $post, $autore;
+global $post, $autore, $circolare;
+if(!empty($circolare)){ ?>
+<?php
+								$numerazione_circolare = $circolare->numero;
+
+							?><div class="card card-bg bg-white card-thumb-rounded">
+	        						<div class="card-body">
+							                <div class="card-content">
+	                    						    <h3 class="h5"><a href="#"><?php echo $circolare->titolo; ?></a></h3>
+	            									<small class="h6 text-greendark"><?php _e("circ. n.", "design_scuole_italia"); echo $numerazione_circolare; ?></small>
+	                        						<p><?php echo $circolare->corpoAnteprima; ?></p>
+		                				</div>
+		        						</div><!-- /card-body -->
+								</div>
+
+<?php } 
+else{
+	
 $autore = get_user_by("ID", $post->post_author);
 
 $image_id= get_post_thumbnail_id($post);
@@ -29,4 +46,6 @@ $image_url = get_the_post_thumbnail_url($post, "vertical-card");
         }
             ?>
 	</div><!-- /card-comments-wrapper -->
-</div><!-- /card --><?php
+</div><!-- /card -->
+<?php } ?>
+<?php 

@@ -27,7 +27,7 @@ if(is_array($tipologie_notizie) && count($tipologie_notizie)){
                 $ppp=2;
                 echo '<div class="row variable-gutters">';
             }
-            $args = array('post_type' => 'post',
+            $args = array('post_type' => ['post','news'],
                     'posts_per_page' => $ppp,
                     'tax_query' => array(
                         array(
@@ -128,8 +128,17 @@ if(is_array($tipologie_notizie) && count($tipologie_notizie)){
             );
             $posts = get_posts($args);
             foreach ($posts as $post) {
-                get_template_part("template-parts/single/card", "circolare");
+                #get_template_part("template-parts/single/card", "circolare");
             }
+            global $circolare;
+            $json=file_get_contents("http://accesso.registroarchimede.it/archimede/seam/resource/rest/comunicazioni/lista/". get_option('idScuola')."/1/1");
+            $json=json_decode($json);
+            $listaCircolari=$json->listaCircolari;
+            if(!empty($listaCircolari)) {
+            foreach ($listaCircolari as $circolare) {
+                get_template_part("template-parts/single/card", "circolarearchimede");
+            }
+                }
             ?>
 
             <div class="py-4">

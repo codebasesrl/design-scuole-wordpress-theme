@@ -1,5 +1,5 @@
 <?php
-global $post, $tipologia_notizia, $ct, $servizio;
+global $post, $tipologia_notizia, $ct, $servizio, $circolare;
 
 $container_class = "bg-white";
 if($ct%2)
@@ -16,17 +16,25 @@ if($ct%2)
 			<div class="splide__track">
 				<ul class="splide__list">
 					<?php
-					$args = array('post_type' => 'circolare',
+					$json=file_get_contents("http://accesso.registroarchimede.it/archimede/seam/resource/rest/comunicazioni/lista/". get_option('idScuola') ."/1/15");
+					$json=json_decode($json);
+					$listaCircolari=$json->listaCircolari;
+
+					/*$args = array('post_type' => 'circolare',
 								'posts_per_page' => 9,
 					);
-					$posts = get_posts($args);
-					foreach ($posts as $post){ ?>				
+					$posts = get_posts($args);*/
+					if(!empty($listaCircolari)) {
+					foreach ($listaCircolari as $circolare){ ?>				
 					<li class="splide__slide">
 						<div class="it-single-slide-wrapper h-100">
+
 							<?php get_template_part("template-parts/single/card", "vertical-thumb"); ?>
+							
+
 						</div>
 					</li>
-					<?php } ?>
+					<?php } }?>
 				</ul>
 			</div>
 		</div><!-- /carousel-large -->
