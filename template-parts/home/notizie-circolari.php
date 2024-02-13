@@ -1,34 +1,40 @@
 <?php
-global $post, $tipologia_notizia, $ct, $servizio;
-$notizie_show_circolari_panoramica = dsi_get_option("notizie_show_circolari_panoramica", "notizie");
+global $post, $tipologia_notizia, $ct, $servizio, $circolare;
+
 $container_class = "bg-white";
 if($ct%2)
 	$container_class = "bg-gray-light";
 
 ?>
 
-
-<?php if($notizie_show_circolari_panoramica != "false") { ?>
 <section class="section <?php echo $container_class; ?> py-5">
 	<div class="container">
 		<div class="title-section mb-5">
-			<h2 class="h4"><?php _e("Le circolari", "design_scuole_italia"); ?></h2>
+			<h2 class="h4"><?php _e("Circolari", "design_scuole_italia"); ?></h2>
 		</div><!-- /title-large -->
 		<div class="it-carousel-wrapper carousel-notice it-carousel-landscape-abstract-three-cols splide" data-bs-carousel-splide>
 			<div class="splide__track">
 				<ul class="splide__list">
 					<?php
-					$args = array('post_type' => 'circolare',
+					$json=file_get_contents("http://accesso.registroarchimede.it/archimede/seam/resource/rest/comunicazioni/lista/". get_option('idScuola') ."/1/15");
+					$json=json_decode($json);
+					$listaCircolari=$json->listaCircolari;
+
+					/*$args = array('post_type' => 'circolare',
 								'posts_per_page' => 9,
 					);
-					$posts = get_posts($args);
-					foreach ($posts as $post){ ?>				
+					$posts = get_posts($args);*/
+					if(!empty($listaCircolari)) {
+					foreach ($listaCircolari as $circolare){ ?>				
 					<li class="splide__slide">
 						<div class="it-single-slide-wrapper h-100">
-							<?php get_template_part("template-parts/single/card", "vertical-thumb-circolare"); ?>
+
+							<?php get_template_part("template-parts/single/card", "vertical-thumb"); ?>
+							
+
 						</div>
 					</li>
-					<?php } ?>
+					<?php } }?>
 				</ul>
 			</div>
 		</div><!-- /carousel-large -->
@@ -37,4 +43,3 @@ if($ct%2)
 		</div>
 	</div><!-- /container -->
 </section><!-- /section -->
-<?php } ?>

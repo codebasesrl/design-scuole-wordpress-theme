@@ -29,6 +29,8 @@ $numerazione_circolare = dsi_get_meta("numerazione_circolare");
 
 ?>
     <main id="main-container" class="main-container greendark">
+        <?php get_template_part("template-parts/common/breadcrumb"); ?>
+
         <?php while ( have_posts() ) :  the_post();
         set_views($post->ID);
 

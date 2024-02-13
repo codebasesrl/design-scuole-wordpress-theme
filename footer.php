@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row variable-gutters mb-5">
             <div class="col logos-wrapper">
-                <img class="ue-logo"
+                <img class="ue-logo" width="255" height="80"
                     src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/logo-eu-inverted.svg' ); ?>"
                     alt="Finanziato dall' Unione Europea - Next generation EU"
                 >
@@ -139,7 +139,10 @@
         }
         get_template_part("template-parts/common/copy");
         ?>
-
+<ul>
+<li>
+<a href="https://new.boscobarrafranca.edu.it/licenza-dei-contenuti/" data-element="legal-notes">Note legali</a>
+</li></ul>
 </footer>
 </div><!-- /push_container -->
 

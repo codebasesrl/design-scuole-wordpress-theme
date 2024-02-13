@@ -1134,7 +1134,7 @@ if(!function_exists("dsi_get_img_from_id_url")) {
                 $image_alt = "Avatar utente";
             }
         }
-        $img = '<img src="'.$url.'" ';
+        $img = '<img width="30" height="30" src="'.$url.'" ';
         if ($classes) $img .= 'class="'.$classes.'" ';
         if ($image_alt) $img .= 'alt="'.$image_alt.'" ';
         if ($image_title && $show_title) $img .= 'title="'.$image_title.'" ';
