@@ -81,6 +81,27 @@ if ($number_of_users > 0) {
 		</div>		
 	</section>	
 <?php } ?>
+<?php
+$args = array('meta_key' => '_dsi_persona_ruolo_scuola','meta_value'	=>	'persone');
+$users = get_users($args);
+$number_of_users = count($users);
+if ($number_of_users > 0) {
+?>
+	<section class="section mt-4">
+		<div class="container">
+			<div class="title-section mb-5">
+			<h2 class="h4">Persone</h2>
+			</div>
+		<div class="row variable-gutters">
+		<?php
+			foreach($users as $user){
+			$autore = get_user_by("ID", $user->data->ID);
+			get_template_part("template-parts/autore/card-persona");
+			}
+		?>
+		</div>
+	</section>
+<?php } ?>
 
 </main>
 
