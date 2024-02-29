@@ -46,7 +46,7 @@ get_header();
                             </nav>
 						<?php
 						else :
-							 get_template_part( 'template-parts/content-parts/list/article', 'circolare' );
+							 get_template_part( 'template-parts/list/article', 'circolare' );
 							//get_template_part( '', 'none' );
 
 						endif;
