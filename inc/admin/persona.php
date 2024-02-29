@@ -160,6 +160,7 @@ function dsi_add_persone_metaboxes() {
 			'dirigente' => __( 'Dirigente Scolastico', 'design_scuole_italia' ),
 			'docente' => __( 'Personale Docente', 'design_scuole_italia' ),
 			'personaleata'   => __( 'Personale non docente', 'design_scuole_italia' ),
+			'persone'   => __( 'Persone', 'design_scuole_italia' ),
             'altro'   => __( 'Altro', 'design_scuole_italia' )
 
         ),
