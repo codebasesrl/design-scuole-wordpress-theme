@@ -9,7 +9,7 @@ global $post, $tipologia_notizia, $ct;
 get_header();
 
 ?>
-<div id="prova"></div>
+
 	<main id="main-container" class="main-container greendark">
 		<?php get_template_part("template-parts/common/breadcrumb"); ?>
 		<?php
