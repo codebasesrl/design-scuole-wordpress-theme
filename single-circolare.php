@@ -109,7 +109,7 @@ $numerazione_circolare = dsi_get_meta("numerazione_circolare");
                             $badgeclass = "badge-outline-greendark";
                             get_template_part("template-parts/common/badges-argomenti"); ?>
                             <div class="badges-wrapper badges-main mt-4">
-                                                        <?php $post_tags = get_the_terms(get_the_ID(), 'tipologia-documento');
+                                                        <?php $post_tags = get_the_terms(get_the_ID(), 'tipologia-circolare');
                                                             if ($post_tags) {
                                                                 echo '<h2 class="h4">Tipologia</h2>';
                                                                 foreach($post_tags as $tag) {
